@@ -5,7 +5,10 @@ import router from "./routes/auth.ts";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials:true,
+}));
 
 
 
@@ -22,7 +25,7 @@ app.use((req, res, next) => {
   console.log("Body:", req.body);
   next();
 });
-app.use("/api/v1/auth", router);
+app.use("/api", router);
 
 
 app.get("/", (req, res) => {

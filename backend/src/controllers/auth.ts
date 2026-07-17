@@ -62,6 +62,7 @@ export const signUp = async (req: Request, res: Response) => {
 };
 
 export const logIn = async (req: Request, res: Response) => {
+  console.log("login controller reached")
   try {
     const { email, password } = req.body;
 
@@ -151,7 +152,7 @@ export const logOut = async (req: Request, res: Response) => {
     console.log("this message from auth api", error);
     return res.status(500).json({
       success: false,
-      message: "internal server error",
+      message: error.message,
     });
   }
 };
